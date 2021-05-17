@@ -1,0 +1,12 @@
+﻿
+    @Html.TextBoxFor(m => m.review.trainee_note, new { placeholder = "Notes" })
+    <div class="form-group" id="muscles-container">
+        <select class="form-control" multiple="multiple" id="muscle">
+            @foreach (Muscle m in Model.muscles)
+            {
+                var v = m.id;
+                <option value="@v">m.name</option>
+            }
+
+        </select>
+    </div>

@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "PersonalTrainerAppContext"
+    },
+    "mssql2": {
+      "type": "mssql",
+      "connectionId": "appContext"
+    },
+    "mssql3": {
+      "type": "mssql",
+      "connectionId": "app_context"
+    },
+    "mssql4": {
+      "type": "mssql",
+      "connectionId": "app_context"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+﻿@model PersonalTrainerApp.ViewModels.TraineeRegister_Category_ViewModel
+@{
+    ViewData["Title"] = "SignUpForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Register", "Trainees", FormMethod.Post, new { TraineeRegister_ViewModel = Model }))
+{
+<h1>Trainee Adjustments</h1>
+<input-form action="Register">
+    @Html.HiddenFor(m => m.traineeId)
+    <select class="form-select" multiple aria-label="multiple select example" asp-for="Selected_categorysId" id="categorys_list" >
+        <option selected>Open this select menu</option>
+        @foreach (int c in Model.categorys)
+        {
+            var name = Enum.GetName(typeof(Category), c);
+            <option value="@c">@name</option>
+        }
+    </select>
+
+        <div class="form-group" id="performance-container">
+            <label asp-for="img" class="control-label"></label>
+            <input asp-for="img" type="url" id="performance-img" class="form-control" />
+        </div>
+        <div class="form-group" id="review-container">
+            <label asp-for="reviewValue" class="control-label"></label>
+            <input asp-for="reviewValue" type="text" id="review-traineeNote" class="form-control" />
+        </div>
+
+        <input type="submit" value="Continue" class="btn btn-primary" />
+</input-form>
+
+   <div>          
+       <a asp-action="Index">Back to List</a>
+   </div>
+ }
+
+
+
+

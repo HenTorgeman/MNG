@@ -1,0 +1,29 @@
+﻿Exercsis_Id,Exercsis_Name,Exercsis_HebrewName,Muscles_Id,Muscles_Name,Muscles_HebrewName
+1,Twin twins,לחיצת תאומים,1,Twins,התאומים
+2,Twins pressing while sitting,לחיצת תאומים בישיבה,1,Twins,התאומים
+4,Kneeling against a dumbbell,פשיטת ברכיים כנגד משקולת יד,2,Quadriceps,ארבע ראשי
+5,Kneeling against straps,פשיטת ברכיים כנגד רצועות,2,Quadriceps,ארבע ראשי
+6,Escalators / sofa leg foot,עליות מדרגה\ספה רגל רגל,2,Quadriceps,ארבע ראשי
+7,Bending knees against a dumbbell while lying down,כפיפת ברכים כנגד משקולת יד בשכיבה,3,hamstring,תלת ראשי
+8,Bending knees against leg straps,כפיפת ברכיים כנגד רצועות רגל רגל,3,hamstring,תלת ראשי
+9,Bending knees against straps while lying down,כפיפת ברכיים כנגד רצועות בשכיבה,3,hamstring,תלת ראשי
+10,Hip raid on machine against leg straps,פשיטת ירך במכונה כנגד רצועות רגל רגל,4,Buttock,ישבן
+11,Hip raid lying on a mattress,פשיטת ירך בשכיבה על מזרן,4,Buttock,ישבן
+12,Bending the hip against the straps,כפיפת ירך כנגד רצועות,5,Ileopsoas,כופף הירך
+13,Removal of thigh against leg straps,הרחקת ירך כנגד רצועות רגל רגל,6,Hip distances,מרחיקי ירך
+14,Squat,סקוואט,7,Complex legs,רגליים מורכבים
+15,Front squat,פרונט סקוואט,7,Complex legs,רגליים מורכבים
+16,Sumo Squat,סומו סקוואט,7,Complex legs,רגליים מורכבים
+17,Goblet Squat,גובלט סקוואט,7,Complex legs,רגליים מורכבים
+18,Dynamic decisive,מכרעים דינמיים,7,Complex legs,רגליים מורכבים
+19,Crucial in walking,מכרעים בהליכה,7,Complex legs,רגליים מורכבים
+20,Bulgarian decisive,מכרע בולגרי,7,Complex legs,רגליים מורכבים
+21,Decisive plus step,מכרע בתוספת מדרגה,7,Complex legs,רגליים מורכבים
+22,Classic deadlift,דדליפט קלאסי,7,Complex legs,רגליים מורכבים
+23,Romanian deadlift,דדליפט רומני,7,Complex legs,רגליים מורכבים
+24,Stiff Leg Deadlift,סטיף לג דדליפט,7,Complex legs,רגליים מורכבים
+25,One leg leg deadlift,סטיף לג דדליפט רגל אחת,7,Complex legs,רגליים מורכבים
+26,Sumo Deadlift,סומו דדליפט,7,Complex legs,רגליים מורכבים
+27,Hyptrast,היפטראסט,7,Complex legs,רגליים מורכבים
+28,Romanian deadlift against a dedicated machine (rope),דדליפט רומני כנגד מכונה יעודית (חבל),7,Complex legs,רגליים מורכבים
+29,Approach thigh against leg straps,קירוב ירך כנגד רצועות רגל רגל,8,thigh thrusters,מקרבי ירך

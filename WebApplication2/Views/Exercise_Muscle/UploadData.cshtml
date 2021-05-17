@@ -1,0 +1,25 @@
+﻿@model PersonalTrainerApp.ViewModels.UploadDataFiles_ViewModel
+
+@{
+    ViewData["Title"] = "UploadFile";
+}
+
+@using (Html.BeginForm("UploadFile", "Exercise_Muscle", FormMethod.Post, new { UploadDataFiles_ViewModel = Model }))
+{
+<h1>Upload Exercise_Muscles File</h1>
+
+    <h4>Exercise of Muscle</h4>
+
+    <input-form action="UploadFile">
+
+        @Html.TextBoxFor(m => m.fileName, new { placeholder = "file path" })
+        <input type="submit" value="UploadFile" class="btn btn-success" />
+    </input-form>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

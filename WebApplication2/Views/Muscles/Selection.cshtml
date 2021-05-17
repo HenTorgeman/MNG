@@ -1,0 +1,25 @@
+﻿@model PersonalTrainerApp.ViewModels.TraineeRegister_Muscles_ViewModel
+
+@{ 
+    ViewData["Title"] = "Selection";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Build_TrainingProgram", "Muscles", FormMethod.Post, new { TraineeRegister_Muscles_ViewModel = Model })) ;
+
+    <h1> Select Muscles</h1>
+    <div class="form-group" id="muscles-container">
+             <div class="list-group" id="muscles_list">
+                @foreach (Muscle m in Model.muscles)
+                    {
+                          var muscle_id = m.id;
+                             <label class="list-group-item">
+                                 <input class="form-check-input me-1" asp-for="selectedMuscles" type="checkbox" value="@muscle_id">@m.name
+                              </label>
+                     }
+                    }
+             </div>
+         }
+    </div>
+
+

@@ -1,0 +1,5 @@
+﻿
+
+1) New user-> Name, phone -> Coach/Trainee ->
+	if Trainee-> Role =3, 
+	if Coach-> Role=2
