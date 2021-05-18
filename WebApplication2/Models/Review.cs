@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 namespace PersonalTrainerApp.Models
 {
     public class Review
+    /*
+    Review object cotaining:
+                    1. id
+                    2. trainee's note on the training
+                    3. coach's note on the training
+    */
     {
         public Review(string trainee_note)
         {

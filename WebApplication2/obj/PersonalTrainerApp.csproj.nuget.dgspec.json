@@ -1,32 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hen-t\\source\\repos\\WebApplication2\\PersonalTrainerApp.csproj": {}
+    "C:\\Users\\sagiv\\Source\\Repos\\sagivmis\\MNG\\WebApplication2\\PersonalTrainerApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hen-t\\source\\repos\\WebApplication2\\PersonalTrainerApp.csproj": {
+    "C:\\Users\\sagiv\\Source\\Repos\\sagivmis\\MNG\\WebApplication2\\PersonalTrainerApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hen-t\\source\\repos\\WebApplication2\\PersonalTrainerApp.csproj",
+        "projectUniqueName": "C:\\Users\\sagiv\\Source\\Repos\\sagivmis\\MNG\\WebApplication2\\PersonalTrainerApp.csproj",
         "projectName": "PersonalTrainerApp",
-        "projectPath": "C:\\Users\\hen-t\\source\\repos\\WebApplication2\\PersonalTrainerApp.csproj",
-        "packagesPath": "C:\\Users\\hen-t\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hen-t\\source\\repos\\WebApplication2\\obj\\",
+        "projectPath": "C:\\Users\\sagiv\\Source\\Repos\\sagivmis\\MNG\\WebApplication2\\PersonalTrainerApp.csproj",
+        "packagesPath": "C:\\Users\\sagiv\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sagiv\\Source\\Repos\\sagivmis\\MNG\\WebApplication2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\hen-t\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\sagiv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
         },
         "frameworks": {
           "net5.0": {
@@ -81,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
