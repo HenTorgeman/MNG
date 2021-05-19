@@ -18,6 +18,10 @@ namespace PersonalTrainerApp.Models
                     6. connection objects (DB reasons)
     */
     {
+
+        /// <summary>
+        /// Hen Remarks
+        /// </summary>
         public Muscle()
         {
             this.name = "";
