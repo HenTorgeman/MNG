@@ -21,13 +21,11 @@ namespace PersonalTrainerApp.Controllers
             _context = context;
         }
 
-        // GET: Users
         public async Task<IActionResult> Index()
         {
             return View(await _context.User.ToListAsync());
         }
 
-        // GET: Users/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,19 +43,8 @@ namespace PersonalTrainerApp.Controllers
             return View(user);
         }
 
-        // GET: Users/Create
-        public IActionResult Create()
-        {
-            ViewBag.Roles = new SelectList(Enum.GetNames(typeof(UserRole)));
-            return View();
-        }
-
-        // POST: Users/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,name,phone,role")] User user)
+        public async Task<IActionResult> Trainee_RegisterProcess([Bind("id,name,phone,role")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -74,26 +61,61 @@ namespace PersonalTrainerApp.Controllers
                     };
                     _context.Trainee.Add(Newtrainee);
                     await _context.SaveChangesAsync();
-               /*     TraineeRegister_Category_ViewModel vm = new TraineeRegister_Category_ViewModel() {
-                        //Transfer it to the constracotr later
-                        traineeId = Newtrainee.id
-                    };
-                    */
-                    //return View("Trainee_SignUpForm",vm);
-                    return RedirectToAction("Register","Trainees",Newtrainee);
+                    return RedirectToAction("Register", "Trainees", Newtrainee);
                 }
-                //Not developed yet;
                 else
                 {
-                    _context.Add(user);
-                    await _context.SaveChangesAsync();
+                    //Error message 
                     return RedirectToAction(nameof(Index));
-                } 
+                }
             }
             return View(user);
         }
 
-        // GET: Users/Edit/5
+        public IActionResult Create()
+        {
+            ViewBag.Roles = new SelectList(Enum.GetNames(typeof(UserRole)));
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("id,name,phone,role")] User user)
+        {
+            //The function create Trainee/Coach and upsate the DB
+            if (ModelState.IsValid)
+            {
+                if (user.role == UserRole.Trainee)
+                {
+                    Trainee Newtrainee = new Trainee()
+                    {
+                        id = user.id,
+                        name = user.name,
+                        phone = user.phone,
+                        role = user.role,
+                        subscribe_date = DateTime.Today.Date
+
+                    };
+                    _context.Trainee.Add(Newtrainee);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    Coach NewCoach = new Coach()
+                    {
+                        trainings = new List<Training>()
+                    };
+                    _context.Coach.Add(NewCoach);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            return View("Index");
+        }
+
+        //-------------------------------------------------------------------------------simple CRUD
+ 
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)

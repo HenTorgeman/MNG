@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -7,17 +8,23 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PersonalTrainerApp.Data;
 using PersonalTrainerApp.Models;
+using Microsoft.AspNetCore.Hosting;
+
+
 using PersonalTrainerApp.ViewModels;
+using Microsoft.AspNetCore.Http;
 
 namespace PersonalTrainerApp.Controllers
 {
     public class TraineesController : Controller
     {
         private readonly app_context _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public TraineesController(app_context context)
+        public TraineesController(app_context context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            this._hostEnvironment = hostEnvironment;
         }
 
         // GET: Trainees
@@ -43,75 +50,118 @@ namespace PersonalTrainerApp.Controllers
 
             return View(trainee);
         }
-
-
+                                                              
         [HttpGet]
         public async Task<IActionResult> Register(Trainee newTrainee)
         {
-            TraineeRegister_Category_ViewModel vm = new TraineeRegister_Category_ViewModel() { 
-            traineeId= newTrainee.id};
-            return View("SignUpForm", vm);
+            TraineeRegister_ViewModel vm = new TraineeRegister_ViewModel() {
+                traineeId = newTrainee.id, };
+            return View("Adjustments", vm);
 
         }
-
         [HttpPost]
-        public async Task<IActionResult> Register(TraineeRegister_Category_ViewModel vm) {
+        public async Task<IActionResult> Register(TraineeRegister_ViewModel vm) {
 
-            Trainee trainee = _context.Trainee.FirstOrDefault(t => t.id==vm.traineeId);
+            Trainee trainee = _context.Trainee.FirstOrDefault(t => t.id == vm.traineeId);
+
             if (trainee != null) {
 
-                trainee.review=new Review(vm.reviewValue);
-                //vm.performance.img_url = vm.img; // Need to add Image upload interface
-                //trainee.performances[0] = vm.performance;
-                await _context.SaveChangesAsync();
+                //Create Trainee.Review property
+                trainee.review = new Review(vm.reviewTrainee, vm.reviewCoach);
 
-               List<Muscle> muscles = new List<Muscle>();
-                foreach (int c in vm.Selected_categorysId)
+                //Create Trainee.Preformance property
+                string ImageName = getImage_Name(vm.img_file, trainee.name);
+                if (ImageName != null)
                 {
-                    muscles.AddRange(_context.Muscles
-                        .Where(m => m.category.ToString().Equals(c))
-                        .ToList());
-                    //muscles.AddRange(_context.Muscles.Where(m => m.category.ToString() == Enum.GetName(typeof(Category), c)));
+                    string path = getImage_Path(ImageName);
+                    trainee.performances.Add(new Performance
+                    {
+                        traineeId = trainee.id,
+                        img_name = ImageName,
+                        img_url = path
+
+                    });
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await vm.img_file.CopyToAsync(fileStream);
+                    }
+                    await _context.SaveChangesAsync();
                 }
-
-                TraineeRegister_Muscles_ViewModel vm2 = new TraineeRegister_Muscles_ViewModel(vm.traineeId,muscles);
-                return View("Muscles/Selection",vm2);
-
             }
-            //send to training program builder
-            //Need to trhow Exeptions
-            return View();
+     
+            return View("Index"); 
         }
 
-    
+        public async Task<IActionResult> Build_Program(TraineeRegister_ViewModel vm)
+        {
 
+            Trainee trainee = _context.Trainee.FirstOrDefault(t => t.id == vm.traineeId);
 
+            if (trainee != null)
+            {
+
+                //Create Trainee.Review property
+                trainee.review = new Review(vm.reviewTrainee, vm.reviewCoach);
+
+                //Create Trainee.Preformance property
+                string ImageName = getImage_Name(vm.img_file, trainee.name);
+                if (ImageName != null)
+                {
+                    string path = getImage_Path(ImageName);
+                    trainee.performances.Add(new Performance
+                    {
+                        traineeId = trainee.id,
+                        img_name = ImageName,
+                        img_url = path
+
+                    });
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await vm.img_file.CopyToAsync(fileStream);
+                    }
+                    await _context.SaveChangesAsync();
+                }
+            }
+            return RedirectToAction("BuildingType_selection", "Training_Program", vm);
+
+        }
+
+        private string getImage_Name(IFormFile img, string traineeName)
+        {
+            if (img != null)
+            {
+                string fileName = Path.GetFileNameWithoutExtension(img.FileName);
+                string extension = Path.GetExtension(img.FileName);
+                string uniqFileName = fileName + "_" + traineeName + "_" + DateTime.Now.ToString("YYMM") + extension;
+                return uniqFileName;
+            }
+            return null;
+            
+        }
+
+        private string getImage_Path(string fileName)
+        {
+            string wwwRootPath = _hostEnvironment.WebRootPath;
+            string path = Path.Combine(wwwRootPath + "/trainee_prerformance_images/", fileName); 
+            return path;
+        }
 
 
         //------------------------------------------------------------------CRUD        
+        [HttpGet]
 
-        //public IActionResult Create()
-        /*{
+        public IActionResult Create()
+        {
            return View();
        }
+
        [HttpPost]
        [ValidateAntiForgeryToken]
-     */
-        //public async Task<IActionResult> Create(TraineeCreation_ViewMode vm)
-        /* {
-             if (ModelState.IsValid)
-             {
-                 _context.Add(vm.trainee);
-                 await _context.SaveChangesAsync();
-                 return RedirectToAction(nameof(Index));
-             }
+        public async Task<IActionResult> Create(Trainee trainee)
+        {
 
-             return View(vm.trainee);
-             */
-
-
-
-        // GET: Trainees/Edit/5
+            return View("Index");
+        }
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)

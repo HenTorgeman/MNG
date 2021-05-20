@@ -22,6 +22,7 @@ namespace PersonalTrainerApp.Data
         public DbSet<PersonalTrainerApp.Models.User> User { get; set; }
         public DbSet<PersonalTrainerApp.Models.Exercise_Muscle> Exercise_Muscle { get; set; }
         public DbSet<PersonalTrainerApp.Models.Review> Preformence { get; set; }
+        public DbSet<PersonalTrainerApp.Models.Category> Category{ get; set; }
 
     }
 }

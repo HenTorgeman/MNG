@@ -16,7 +16,7 @@ namespace PersonalTrainerApp.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.4")
+                .HasAnnotation("ProductVersion", "5.0.6")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("MuscleTraining_Program", b =>
@@ -32,6 +32,24 @@ namespace PersonalTrainerApp.Migrations
                     b.HasIndex("training_Programsid");
 
                     b.ToTable("MuscleTraining_Program");
+                });
+
+            modelBuilder.Entity("PersonalTrainerApp.Models.Category", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("hebrewName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Category");
                 });
 
             modelBuilder.Entity("PersonalTrainerApp.Models.Exercise", b =>
@@ -137,13 +155,15 @@ namespace PersonalTrainerApp.Migrations
                     b.Property<string>("HebrewName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("category")
+                    b.Property<int>("categoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
+
+                    b.HasIndex("categoryId");
 
                     b.ToTable("Muscles");
                 });
@@ -157,6 +177,9 @@ namespace PersonalTrainerApp.Migrations
 
                     b.Property<DateTime>("datetime")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("img_name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("img_url")
                         .HasColumnType("nvarchar(max)");
@@ -255,10 +278,16 @@ namespace PersonalTrainerApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("active")
+                        .HasColumnType("bit");
+
                     b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("traineeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("trainings_duration")
                         .HasColumnType("int");
 
                     b.HasKey("id");
@@ -382,6 +411,17 @@ namespace PersonalTrainerApp.Migrations
                     b.Navigation("training");
                 });
 
+            modelBuilder.Entity("PersonalTrainerApp.Models.Muscle", b =>
+                {
+                    b.HasOne("PersonalTrainerApp.Models.Category", "category")
+                        .WithMany("muscles")
+                        .HasForeignKey("categoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("category");
+                });
+
             modelBuilder.Entity("PersonalTrainerApp.Models.Performance", b =>
                 {
                     b.HasOne("PersonalTrainerApp.Models.Trainee", "trainee")
@@ -442,6 +482,11 @@ namespace PersonalTrainerApp.Migrations
                         .HasForeignKey("reviewid");
 
                     b.Navigation("review");
+                });
+
+            modelBuilder.Entity("PersonalTrainerApp.Models.Category", b =>
+                {
+                    b.Navigation("muscles");
                 });
 
             modelBuilder.Entity("PersonalTrainerApp.Models.Exercise", b =>

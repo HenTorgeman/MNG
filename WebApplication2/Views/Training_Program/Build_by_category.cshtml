@@ -1,0 +1,29 @@
+﻿@model PersonalTrainerApp.ViewModels.ProgramBuilder_Categories_ViewModel
+@{
+    ViewData["Title"] = "Build_by_category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Categories_builder", "Training_Program", FormMethod.Post, new { ProgramBuilder_Categories_ViewModel = Model }))
+{
+<h1>Build </h1>
+<input-form action="Register">
+    @Html.HiddenFor(m => m.traineeId)
+    <select class="form-select" multiple aria-label="multiple select example" asp-for="selected_categories" id="categorys_list">
+        @foreach (Category c in Model.categories)
+        {
+            <option value="@c.id">@c.name</option>
+        }
+    </select>
+
+        <input type="submit" value="Continue" class="btn btn-primary" />
+</input-form>
+   <div>          
+       <a asp-action="Index">Back to List</a>
+   </div>
+ }
+
+
+
+

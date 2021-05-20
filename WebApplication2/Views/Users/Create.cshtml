@@ -28,8 +28,11 @@
                 <span asp-validation-for="role" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" asp-action="Create" value="Create" class="btn btn-primary" />
+
+                <input type="submit" asp-action="Trainee_RegisterProcess" value="Trainee Adjustments" class="btn btn-primary" />
             </div>
+
         </form>
     </div>
 </div>

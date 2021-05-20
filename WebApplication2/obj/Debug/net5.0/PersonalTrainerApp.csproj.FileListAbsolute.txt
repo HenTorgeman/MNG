@@ -356,7 +356,6 @@ C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\Razor\Views\Trainee
 C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\Razor\Views\Trainees\Details.cshtml.g.cs
 C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\Razor\Views\Trainees\Edit.cshtml.g.cs
 C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\Razor\Views\Trainees\Index.cshtml.g.cs
-C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\Razor\Views\Trainees\SignUpForm.cshtml.g.cs
 C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\Razor\Views\Trainings\Create.cshtml.g.cs
 C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\Razor\Views\Trainings\Delete.cshtml.g.cs
 C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\Razor\Views\Trainings\Details.cshtml.g.cs
@@ -382,3 +381,12 @@ C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\PersonalTrainerApp.
 C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\ref\PersonalTrainerApp.dll
 C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\PersonalTrainerApp.pdb
 C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\PersonalTrainerApp.genruntimeconfig.cache
+C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\Razor\Views\Trainees\Adjustments.cshtml.g.cs
+C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\Razor\Views\Training_Program\Build_by_category.cshtml.g.cs
+C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\Razor\Views\Training_Program\Build_Initial.cshtml.g.cs
+C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\Razor\Views\Categories\Create.cshtml.g.cs
+C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\Razor\Views\Categories\Delete.cshtml.g.cs
+C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\Razor\Views\Categories\Details.cshtml.g.cs
+C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\Razor\Views\Categories\Edit.cshtml.g.cs
+C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\Razor\Views\Categories\Index.cshtml.g.cs
+C:\Users\hen-t\gitLocal\MNG\WebApplication2\obj\Debug\net5.0\Razor\Views\Categories\UploadData.cshtml.g.cs

@@ -43,20 +43,16 @@ namespace PersonalTrainerApp.Controllers
         {
             string fileName = vm.fileName;
             DataTable dt = IO.ReadCsvFile(fileName);
-            for (int i = 1; i < dt.Rows.Count; i++)
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
                 Muscle mu = new Muscle(dt.Rows[i]);
                 _context.Muscles.Add(mu);
                 await _context.SaveChangesAsync();
+
             }
             return RedirectToAction(nameof(Index));
         }
-        public async Task<IActionResult> Build_TrainingProgram(TraineeRegister_Muscles_ViewModel vm)
-        {
-            return View();
-        }
 
-        
 
 
 

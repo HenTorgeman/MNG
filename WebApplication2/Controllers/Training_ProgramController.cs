@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PersonalTrainerApp.Data;
 using PersonalTrainerApp.Models;
+using PersonalTrainerApp.ViewModels;
 
 namespace PersonalTrainerApp.Controllers
 {
@@ -44,6 +45,69 @@ namespace PersonalTrainerApp.Controllers
 
             return View(training_Program);
         }
+        
+        [HttpGet]
+        public async Task<IActionResult> BuildingType_selection(TraineeRegister_ViewModel prev_vm)
+        {
+            TrainingProgram_Selection_ViewModel vm = new TrainingProgram_Selection_ViewModel()
+            {
+                traineeId = prev_vm.traineeId
+            };
+            return View("Build_Initial", vm);
+        }
+        [HttpPost]
+        public async Task<IActionResult> BuildingType_selection(TrainingProgram_Selection_ViewModel vm)
+        {
+
+            return View("Index");
+
+        }
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> Categories_builder(Trainee trainee)
+        {
+            var categories = _context.Category.ToList();
+            ProgramBuilder_Categories_ViewModel vm = new ProgramBuilder_Categories_ViewModel()
+            {
+                categories = categories
+            };
+            return View("Build_by_category", vm);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Categories_builder(ProgramBuilder_Categories_ViewModel vm)
+        {
+            List<Muscle> musclesList = GetMuscles_byCategoriesId(vm.selected_categories);
+            if (musclesList.Count > 0)
+            {
+                //TraineeRegister_Muscles_ViewModel vm2 = new TraineeRegister_Muscles_ViewModel(vm.traineeId, last_selected_muscles);
+               // return View("Muscles/Selection", vm2);
+            }
+            return View("Index"); //Need to be Error Handler
+        }
+
+        public List<Muscle> GetMuscles_byCategoriesId(List<int> categoriesId)
+        {
+            List<Muscle> musclesList = new List<Muscle>();
+            foreach (int cId in categoriesId)
+            {
+                var c = _context.Category.FirstOrDefault(c => c.id == cId);
+                if (c != null)
+                {
+                    var temp_muscle = _context.Muscles.
+                        Where(m => m.category.id == c.id)
+                        .ToList();
+
+                    if (temp_muscle != null)
+                        musclesList.AddRange(temp_muscle);
+                }
+            }
+            return musclesList;
+
+        }
+
+        //------------------------------------------------------simple CRUD
 
         // GET: Training_Program/Create
         public IActionResult Create()

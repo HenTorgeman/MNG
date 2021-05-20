@@ -1,0 +1,40 @@
+﻿@model PersonalTrainerApp.ViewModels.TraineeRegister_ViewModel
+@{
+    ViewData["Title"] = "Adjustments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Register", "Trainees", FormMethod.Post, new { TraineeRegister_ViewModel = Model }))
+{
+    <h1>Trainee Adjustments</h1>
+    <input-form action="Register">
+        @Html.HiddenFor(m => m.traineeId)
+
+        <div class="form-group" id="performance-container">
+
+            <label asp-for="img_file" class="control-label"></label>
+            <input asp-for="img_file" accept="image/png,image/jpg,image/">
+            <span asp-validation-for="img_file" class="text-danger"></span>
+        </div>
+
+        <div class="form-group" id="review-container">
+            <label asp-for="reviewTrainee" class="control-label"></label>
+            <input asp-for="reviewTrainee" type="text" id="review-traineeNote" class="form-control" />
+            <label asp-for="reviewCoach" class="control-label"></label>
+            <input asp-for="reviewCoach" type="text" id="review-CoachNote" class="form-control" />
+        </div>
+
+        <input type="submit" value="Save" asp-action="Register" class="btn btn-primary" />
+        <input type="submit" asp-action="Build_Program" value="Build Program" class="btn btn-primary" />
+
+    </input-form>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+}
+
+
+
+

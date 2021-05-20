@@ -19,13 +19,18 @@ namespace PersonalTrainerApp.Models
                     5. list of muscles applied work on
     */
     {
-        //Duration
-        public int id { get; set; }
-        public string name { get; set; } // Of program (?)
-        public int traineeId { get; set; } 
-        public virtual Trainee trainee{ get; set; } // here also maybe its better to fetch trainee object when needed to ease lodaing time if possible
-        public virtual List<Training> trainings{ get; set; } // same (take only id's and fetch when needed if possible)
-        public virtual List<Muscle> muscles{ get; set; } // List of muscles wanted to work on by client. same (take only id's and fetch when needed if possible).
+
+        
+            public int id { get; set; }
+            public string name { get; set; }
+            public int traineeId { get; set; }
+            public virtual Trainee trainee { get; set; }
+            public virtual List<Training> trainings { get; set; }
+            public virtual List<Muscle> muscles { get; set; }
+            public bool active { get; set; }
+            public int trainings_duration { get; set; }
+
+        }
 
     }
-}
+

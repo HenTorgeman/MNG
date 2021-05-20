@@ -1,0 +1,34 @@
+﻿@model PersonalTrainerApp.ViewModels.TrainingProgram_Selection_ViewModel
+@{
+    ViewData["Title"] = "Build_Initial";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Categories_builder", "Training_Program", FormMethod.Post, new { TrainingProgram_Selection_ViewModel = Model }))
+{
+    @Html.HiddenFor(m => m.traineeId)
+    <h1>Build Training Program</h1>
+
+    @Html.LabelFor(m => m.duration, "Select the number of trainings in the trainig program")
+    <div class="btn-group me-2" role="group" aria-label="First group" id="duration_option" asp-for="duration">
+        <button type="button" class="btn btn-outline-secondary" value="1">1</button>
+        <button type="button" class="btn btn-outline-secondary" value="2">2</button>
+        <button type="button" class="btn btn-outline-secondary" value="3">3</button>
+        <button type="button" class="btn btn-outline-secondary" value="4">4</button>
+        <button type="button" class="btn btn-outline-secondary" value="5">5</button>
+        <button type="button" class="btn btn-outline-secondary" value="6">6</button>
+        <button type="button" class="btn btn-outline-secondary" value="7">7</button>
+        <button type="button" class="btn btn-outline-secondary" value="8">8</button>
+        <button type="button" class="btn btn-outline-secondary" value="9">9</button>
+        <button type="button" class="btn btn-outline-secondary" value="10">10</button>
+    </div>
+
+    @Html.LabelFor(m => m.diffrent_training_number,"Select number of diffrent trainings during the trainig program")
+    <div class="btn-group me-2" role="group" aria-label="First group" id="diffrent_training_number_option" asp-for="diffrent_training_number">
+        <button type="button" class="btn btn-outline-secondary" value="1">1</button>
+        <button type="button" class="btn btn-outline-secondary" value="2">2</button>
+        <button type="button" class="btn btn-outline-secondary" value="3">3</button>
+    </div>
+
+    }
